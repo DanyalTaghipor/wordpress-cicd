@@ -13,6 +13,7 @@ services:
     volumes:
       - ./wp-content:/var/www/html/wp-content
 
+
   db:
     image: mysql:5.7
     environment:
