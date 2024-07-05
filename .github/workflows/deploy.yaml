@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker images
-        run: docker-compose -f docker-compose.yaml build
+        run: docker compose -f docker-compose.yaml build
 
       - name: Deploy to remote server
         uses: appleboy/ssh-action@v1.0.3
@@ -32,6 +32,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /projects/wordpress
-            docker-compose down
+            docker compose down --remove-orphans
             git pull origin main
-            docker-compose up -d
+            docker compose up -d
