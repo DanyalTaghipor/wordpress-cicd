@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker images
-        run: docker-compose -f docker-compose.yml build
+        run: docker-compose -f docker-compose.yaml build
 
       - name: Deploy to remote server
         uses: appleboy/ssh-action@v1.0.3
